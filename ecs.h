@@ -47,7 +47,11 @@ public:
 
     template <typename... Args>
     inline T* construct(size_t index, Args&&... args) {
-        return new (get(index)) T(std::forward<Args>(args)...);
+        if constexpr (sizeof...(Args) == 0) {
+            return new (get(index)) T();
+        } else {
+            return new (get(index)) T{std::forward<Args>(args)...};
+        }
     }
 
     inline void destroy(size_t index) override {
@@ -77,7 +81,15 @@ public:
         }
     }
     ~Scene() {
-        // for (auto ent : )
+        for (auto ent : group()) {
+            destroyEntity(ent);
+        }
+        for (int i = 0; i < COMPONENTS; i++) {
+            if (m_componentPools[i])  {
+                delete m_componentPools[i];
+                m_componentPools[i] = nullptr;
+            }
+        }
     }
 
     EntityID createEntity() {

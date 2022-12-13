@@ -1,0 +1,2 @@
+- add sparse-iteration (view) for single component iterations
+- add a way to combine common components which occur together into 1 bugger component

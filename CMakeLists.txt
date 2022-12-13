@@ -4,6 +4,8 @@ project(ecs)
 
 set(CXX_STANDARD 20)
 
-file(GLOB_RECURSE SRC src/*.cpp)
-
-add_executable(ecs ${SRC})
+add_executable(example1 example/example1.cpp)
+add_executable(example2 example/example2.cpp)
+add_executable(example3 example/example3.cpp)
+add_executable(example4 example/example4.cpp)
+add_executable(example5 example/example5.cpp)
