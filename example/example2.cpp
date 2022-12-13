@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../ecs.h"
+#include "../ecs.hpp"
 
 using Scene = ecs::Scene<128>;  // this allows max of 128 components that can be registered by an entity
 
